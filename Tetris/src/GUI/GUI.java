@@ -14,20 +14,27 @@ import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
 
 import Logica.Logica;
+import Timer.Timer;
 
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
 import java.awt.Font;
 import javax.swing.JButton;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.SwingConstants;
 
 
 public class GUI {
 	
 	private JFrame frmTetris;
 	private Logica miLogica;
-
+	private JLabel lblTiempoTranscurrido;
+	private Timer miTimer;
+    Thread tiempo;
 	/**
 	 * Launch the application.
 	 */
@@ -48,9 +55,15 @@ public class GUI {
 	 * Create the application.
 	 */
 	public GUI() {
-	
-		miLogica = new Logica();
+	    lblTiempoTranscurrido= new JLabel("00:00");
+	    lblTiempoTranscurrido.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTiempoTranscurrido.setForeground(new Color(255, 255, 255));
+		lblTiempoTranscurrido.setFont(new Font("Dialog", Font.PLAIN, 26));
+		lblTiempoTranscurrido.setBounds(10, 43, 144, 34);
+		miLogica = new Logica(this);
+		miTimer= new Timer(this);
 		initialize();
+		tiempo=new Thread(miTimer);
 	}
 
 	/**
@@ -69,6 +82,7 @@ public class GUI {
 		panelFondo.setBorder(borde);
 		frmTetris.getContentPane().add(panelFondo);
 		panelFondo.setLayout(null);
+		
 		
 		JLabel lblproxTetrimino = new JLabel("Proximo Tetrimino");
 		lblproxTetrimino.setForeground(new Color(255, 255, 255));
@@ -115,12 +129,39 @@ public class GUI {
 		btnJugar.setBackground(new Color(20, 10, 30));
 		panelFondo.add(btnJugar);
 		
+		btnJugar.addActionListener(new ActionListener(){
+		  public void actionPerformed(ActionEvent e) {
+		    comenzarJuego();
+		  }
+		  private void comenzarJuego() {
+		    miLogica.comenzarJuego();  
+		    tiempo.start();
+		  }
+		});
+		
 		Image icon = new ImageIcon(getClass().getResource("/Images/Icono.png")).getImage();
 		frmTetris.setIconImage(icon);
 		
 		frmTetris.setBounds(100, 100, 800, 700);
 		frmTetris.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTetris.setBackground(new Color(0, 20, 10));
+		
+		JPanel panelTiempo = new JPanel();
+		panelTiempo.setBackground(Color.BLACK);
+		panelTiempo.setBounds(610, 549, 164, 88);
+		panelFondo.add(panelTiempo);
+		panelTiempo.setLayout(null);
+		
+		JLabel lblTiempo= new JLabel("Tiempo");
+		lblTiempo.setBounds(38, 5, 87, 34);
+		lblTiempo.setForeground(new Color(255, 255, 224));
+		lblTiempo.setFont(new Font("Dialog", Font.PLAIN, 26));
+		panelTiempo.add(lblTiempo);
+		
+		panelTiempo.add(lblTiempoTranscurrido);
+		
+		
+		
 		
 		//labels de la grilla
 		
@@ -309,6 +350,7 @@ public class GUI {
 		lbl121.setBounds(30, 560, 28, 28);
 		panelGrilla.add(lbl121);
 		
+		
 		/*for (int i = 2; i <10; i++) {
 			for (int j= 0; j < 21; j++) {
 				//String label = "lbl"+ String.valueOf(i)+ String.valueOf(j);
@@ -330,5 +372,11 @@ public class GUI {
 				}
 			}
 		});
+	}
+	public void setLabelTiempo(String tiempo) {
+	  lblTiempoTranscurrido.setText(tiempo);
+	}
+	public void moverTetAbajo(){
+      miLogica.moverTetAbajo();
 	}
 }
