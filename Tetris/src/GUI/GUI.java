@@ -33,8 +33,7 @@ public class GUI {
 	private JFrame frmTetris;
 	private Logica miLogica;
 	private JLabel lblTiempoTranscurrido;
-	private Timer miTimer;
-    Thread tiempo;
+	Thread tiempo;
 	/**
 	 * Launch the application.
 	 */
@@ -61,9 +60,8 @@ public class GUI {
 		lblTiempoTranscurrido.setFont(new Font("Dialog", Font.PLAIN, 26));
 		lblTiempoTranscurrido.setBounds(10, 43, 144, 34);
 		miLogica = new Logica(this);
-		miTimer= new Timer(this);
 		initialize();
-		tiempo=new Thread(miTimer);
+		tiempo=new Thread(miLogica.getTimer());
 	}
 
 	/**
@@ -375,8 +373,5 @@ public class GUI {
 	}
 	public void setLabelTiempo(String tiempo) {
 	  lblTiempoTranscurrido.setText(tiempo);
-	}
-	public void moverTetAbajo(){
-      miLogica.moverTetAbajo();
 	}
 }

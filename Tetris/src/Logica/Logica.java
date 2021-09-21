@@ -2,6 +2,7 @@ package Logica;
 
 import GUI.GUI;
 import Grilla.Grilla;
+import Timer.Timer;
 
 public class Logica {
 
@@ -9,14 +10,16 @@ public class Logica {
     private int puntuacion;
     private Grilla miGrilla;
     private GUI miGUI;
-    private Boolean jugando;
-
+    private boolean jugando;
+    private Timer miTimer;
+    
     //constructor
     public Logica (GUI interfaz) {
         puntuacion = 0;
         miGrilla = new Grilla();
         miGUI=interfaz;
         jugando=false;
+        miTimer=new Timer(this);
     }
 
     //metodos
@@ -62,12 +65,15 @@ public class Logica {
 
     public void setTiempo(String tiempo) {
       miGUI.setLabelTiempo(tiempo); 
-      System.out.println(tiempo);
     }
+    
     //consultas
 
     public int getPuntuacion () {
         return puntuacion;
     }
-
+  
+    public Timer getTimer() {
+      return miTimer;	
+    }
 }

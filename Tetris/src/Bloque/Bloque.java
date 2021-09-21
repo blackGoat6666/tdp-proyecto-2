@@ -10,16 +10,13 @@ public class Bloque {
 	}
 	
 	//comandos
-	void cambiarEstado () {
-		if (lleno == false) {
-			lleno = true;
-		} else {
-			lleno = false;
-		}
+	public void setEstado(boolean estado) {
+	  lleno=estado;	
 	}
+	
 	 
 	//consultas
-	boolean getEstado () {
+	public boolean getEstado () {
 		return lleno;
 	}
 	

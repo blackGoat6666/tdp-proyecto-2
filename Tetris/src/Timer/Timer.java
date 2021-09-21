@@ -1,26 +1,31 @@
 package Timer;
 
-import GUI.GUI;
+import Logica.Logica;
 
 public class Timer implements Runnable {
     // atributos
-    private int tiempoTotal;
-    private GUI miGUI;
+   
+	private Logica miLogica;
     private long tiempoBase;
     boolean correr;
+    
     //constructor
-    public Timer(GUI interfaz) {
-      miGUI=interfaz;
+    
+    public Timer(Logica log) {
+      miLogica=log;
       tiempoBase=System.currentTimeMillis();
       correr=true;
     }
+    
+    
     //metodos
+    
     public void run() {
       while(correr) {
         try {
-          miGUI.setLabelTiempo(this.getTotalTime());
+          miLogica.setTiempo(this.getTotalTime());
           if(this.segundos()% this.getVelocidad()==0) {
-            miGUI.moverTetAbajo();
+            miLogica.moverTetAbajo();
           }
           Thread.sleep(250);
         }
@@ -34,7 +39,7 @@ public class Timer implements Runnable {
     }
 
     //consultas
-    public String getTotalTime () {
+    private String getTotalTime () {
       long segundos= this.segundos();
       long minutos= segundos/60;
       String retorno= new String("");
@@ -50,6 +55,8 @@ public class Timer implements Runnable {
       }
       return (retorno);
     }
+   
+    
     private int getVelocidad() {
       if(this.segundos()>150) {
         return 500;
