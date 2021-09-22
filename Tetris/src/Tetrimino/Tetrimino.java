@@ -5,13 +5,29 @@ import ParOrdenado.ParOrdenado;
 public abstract class Tetrimino {
 
 	// atributos
-	int rotacion;
-	ParOrdenado [] coordenadasActuales;
+	protected int rotacion;
+	protected char color;
+	protected ParOrdenado p1,p2,p3,p4;
+	protected ParOrdenado [] coordenadasActuales;
 	
 	 //constructor ---
 	
 	//metodos
-	public abstract void cambiarPosicion (int x, int y);
+	public void cambiarPosicion(int x, int y) {
+		if (y !=0) {
+			p1.setY(p1.getY()+y);
+			p2.setY(p2.getY()+y);
+			p3.setY(p3.getY()+y);
+			p4.setY(p4.getY()+y);
+		}
+		if(x==1) {
+			p1.setX(p1.getX()+1);
+			p2.setX(p2.getX()+1);
+			p3.setX(p3.getX()+1);
+			p4.setX(p4.getX()+1);
+		}
+	}
+		
 	
 	public void rotar() {
 		if (rotacion==1)
@@ -25,11 +41,14 @@ public abstract class Tetrimino {
 				else 
 					this.posicion1(); 
 	}
-	public abstract void posicion1();
-	public abstract void posicion2();
-	public abstract void posicion3();
-	public abstract void posicion4();
+	protected abstract void posicion1();
+	protected abstract void posicion2();
+	protected abstract void posicion3();
+	protected abstract void posicion4();
+	
 	
 	//consultas--
-
+	protected int getPosicion() {
+		return rotacion;
+	}
 }

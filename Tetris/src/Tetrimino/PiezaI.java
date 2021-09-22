@@ -5,11 +5,12 @@ import ParOrdenado.ParOrdenado;
 
 public class PiezaI extends Tetrimino{
 	//atributos de instancia
-	private ParOrdenado p1,p2,p3,p4;
+	
 	private int rotacion;
 	ParOrdenado [] coordenadasActuales;
 	//constructor
 	public PiezaI() {
+		color='c';
 		p1= new ParOrdenado(0,3);
 		p2= new ParOrdenado(0,4);
 		p3= new ParOrdenado(0,5);
@@ -23,12 +24,21 @@ public class PiezaI extends Tetrimino{
 		rotacion=1;
 		
 	}
-	public void cambiarPosicion(int x, int y) {
-		
-		
-	}
 
-	public void posicion2() {
+	
+
+	protected void posicion1() {
+		int piso=p3.getX();
+		p1.setX(piso);
+		p1.setY(p1.getY()-1);
+		p3.setY(p3.getY()+1);
+		p2.setX(piso);
+		p4.setY(p4.getY()+2);
+		p4.setX(piso);
+		rotacion=1;
+	
+	}
+	protected void posicion2() {
 		int columna=p3.getY();
 		p1.setY(columna);
 		p1.setX(p1.getX()-1);
@@ -39,7 +49,7 @@ public class PiezaI extends Tetrimino{
 		rotacion=2;
 	
 	}
-	public void posicion3() {
+	protected void posicion3() {
 		int piso=p3.getX();
 		p1.setX(piso);
 		p1.setY(p1.getY()+1);
@@ -52,7 +62,7 @@ public class PiezaI extends Tetrimino{
 		rotacion=3;
 		
 	}
-	public void posicion4() {
+	protected void posicion4() {
 		int columna=p3.getY();
 		p1.setY(columna);
 		p1.setX(p1.getX()+1);
@@ -63,16 +73,6 @@ public class PiezaI extends Tetrimino{
 		rotacion=4;
 	
 	}
-	public void posicion1() {
-		int piso=p3.getX();
-		p1.setX(piso);
-		p1.setY(p1.getY()-1);
-		p3.setY(p3.getY()+1);
-		p2.setX(piso);
-		p4.setY(p4.getY()+2);
-		p4.setX(piso);
-		rotacion=1;
-	
-	}
+
 	
 }
