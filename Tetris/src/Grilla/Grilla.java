@@ -47,7 +47,7 @@ public class Grilla {
     }	
 
 	public void moverIzquierda() {
-	  ParOrdenado[] posicionActual=tetriminoActual.getPosicionesIzquierda(tetriminoActual.getRotacion());	
+	  ParOrdenado[] posicionActual=tetriminoActual.colisionIzquierda(tetriminoActual.getRotacion());	
 	  int puedenMoverse=0;
 	  for(int i=0; i<posicionActual.length ; i++) {
 	    if(posicionActual[i].getY()>0 && casilleros[posicionActual[i].getX()][posicionActual[i].getY()-1].getEstado()==false ) {
@@ -60,7 +60,7 @@ public class Grilla {
 	}
 	
 	public void moverDerecha() {
-	  ParOrdenado[] posicionActual=tetriminoActual.getPosicionesDerecha(tetriminoActual.getRotacion());	
+	  ParOrdenado[] posicionActual=tetriminoActual.colisionDerecha(tetriminoActual.getRotacion());	
 	  int puedenMoverse=0;
 	  for(int i=0; i<posicionActual.length ; i++) {
 	    if(posicionActual[i].getY()<9 && casilleros[posicionActual[i].getX()][posicionActual[i].getY()+1].getEstado()==false ) {
@@ -73,7 +73,7 @@ public class Grilla {
 	}
 	
     public boolean girarTetrimino() {
-	  ParOrdenado[] posicionDer=tetriminoActual.getPosicionesDerecha((tetriminoActual.getRotacion()+1)%4);	
+	  ParOrdenado[] posicionDer=tetriminoActual.colisionDerecha((tetriminoActual.getRotacion()+1)%4);	
 	  int puedenMoverse=0;
 	  for(int i=0; i<posicionDer.length ; i++) {
 	    if(posicionDer[i].getY()<9 && casilleros[posicionDer[i].getX()][posicionDer[i].getY()+1].getEstado()==false ) {
@@ -83,7 +83,7 @@ public class Grilla {
 	  if(puedenMoverse!=posicionDer.length){
 	    return false;  
 	  }
-	  ParOrdenado[] posicionIzq=tetriminoActual.getPosicionesIzquierda((tetriminoActual.getRotacion()+1)%4);	
+	  ParOrdenado[] posicionIzq=tetriminoActual.colisionIzquierda((tetriminoActual.getRotacion()+1)%4);	
 	  puedenMoverse=0;
 	  for(int i=0; i<posicionIzq.length ; i++) {
 	    if(posicionIzq[i].getY()>0 && casilleros[posicionIzq[i].getX()][posicionIzq[i].getY()-1].getEstado()==false ) {
@@ -93,7 +93,7 @@ public class Grilla {
 	  if(puedenMoverse!=posicionIzq.length){
 	    return false;
 	  } 
-	  ParOrdenado[] posicionAbajo=tetriminoActual.getPosicionesAbajo((tetriminoActual.getRotacion()+1)%4);	
+	  ParOrdenado[] posicionAbajo=tetriminoActual.colisionPiso((tetriminoActual.getRotacion()+1)%4);	
 	  puedenMoverse=0;
 	  for(int i=0; i<posicionAbajo.length ; i++) {
 	    if(posicionAbajo[i].getX()<20 && casilleros[posicionAbajo[i].getX()+1][posicionAbajo[i].getY()].getEstado()==false ) {
@@ -108,7 +108,7 @@ public class Grilla {
 	}
 	
 	public boolean moverAbajo() { //retorna true cuando pudo bajar, false cuando no pudo. Es decir, false si colisionó
-	  ParOrdenado[] posicionActual=tetriminoActual.getPosicionesAbajo(tetriminoActual.getRotacion());	
+	  ParOrdenado[] posicionActual=tetriminoActual.colisionPiso(tetriminoActual.getRotacion());	
 	  int puedenMoverse=0;
 	  for(int i=0; i<posicionActual.length ; i++) {
 	    if(posicionActual[i].getX()<20 && casilleros[posicionActual[i].getX()+1][posicionActual[i].getY()].getEstado()==false ) {
@@ -123,12 +123,12 @@ public class Grilla {
 	  return false;
 	}
 	
-	private void colisiona(){
+	public void colisiona(){
 	  ParOrdenado[] posiciones=tetriminoActual.getPosicion();	
 	  for(int i=0; i<posiciones.length; i++){
 	    casilleros[posiciones[i].getX()][posiciones[i].getY()].setEstado(true);
 	  }
-	}
+	 }
 	
 	private void generarTetrimino() {
 	  Random rand= new Random();
@@ -161,11 +161,39 @@ public class Grilla {
 	
 	//consultas
 	
-	public boolean grillaLlena () {
-		return false;
+	public boolean grillaLlena() {
+	 ParOrdenado[] spawnea=tetriminoSiguiente.getPosicion();
+	 for(int i=0; i<spawnea.length; i++) {
+	   if(casilleros[spawnea[i].getX()][spawnea[i].getY()].getEstado()==true){
+	     return true;  
+	   }
+	 }
+	 return false;
 	}
 
 	public boolean filaLlena(int fila) {
-		return true;
+	  for(int i=0; i<casilleros[0].length; i++){
+	    if(casilleros[fila][i].getEstado()==false) {
+	      return false;	
+	    }
+	  }
+	  return true;
 	}
+	
+	public ParOrdenado getTetriminoFilas() {
+	  ParOrdenado[] posiciones= tetriminoActual.getPosicion();
+	  int masAbajo= posiciones[0].getX();
+	  int masArriba= posiciones[0].getX();
+	  for(int i=1; i<posiciones.length; i++) {
+	    if(posiciones[i].getX()>masAbajo) {
+	      masAbajo=posiciones[i].getX(); 	
+	    }
+	    if(posiciones[i].getX()<masArriba) {
+		  masArriba=posiciones[i].getX(); 	
+	    }
+	  }
+	  return new ParOrdenado(masAbajo,masArriba);
+	}
+	
+	
 }
