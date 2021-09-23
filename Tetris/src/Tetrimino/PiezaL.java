@@ -59,4 +59,89 @@ public class PiezaL extends Tetrimino {
 		p4.setY(p4.getY()-1);
 		rotacion=4;
 	}
+	public ParOrdenado[] colisionIzquierda() {
+		if(rotacion==1) {
+			ParOrdenado[] retorno = new ParOrdenado[2];
+			retorno[0]=p1;
+			retorno[1]=p2;
+			return retorno;
+		}
+		else if (rotacion==2) {
+			ParOrdenado[] retorno = new ParOrdenado[3];
+			retorno[0]=p1;
+			retorno[1]=p2;
+			retorno[2]=p3;
+			return retorno;
+		}
+		else if (rotacion==3) {
+			ParOrdenado[] retorno = new ParOrdenado[2];
+			retorno[0]=p2;
+			retorno[1]=p3;
+			return retorno;
+		}
+		else {
+			ParOrdenado[] retorno = new ParOrdenado[3];
+			retorno[0]=p2;
+			retorno[1]=p4;
+			retorno[2]=p3;
+			return retorno;
+		}		
+	}
+	public ParOrdenado[] colisionDerecha() {
+		if(rotacion==1) {
+			ParOrdenado[] retorno = new ParOrdenado[2];
+			retorno[0]=p1;
+			retorno[1]=p4;
+			return retorno;
+		}
+		else if (rotacion==2) {
+			ParOrdenado[] retorno = new ParOrdenado[3];
+			retorno[0]=p1;
+			retorno[1]=p2;
+			retorno[2]=p4;
+			return retorno;
+		}
+		else if (rotacion==3) {
+			ParOrdenado[] retorno = new ParOrdenado[2];
+			retorno[0]=p2;
+			retorno[1]=p4;
+			return retorno;
+		}
+		else {
+			ParOrdenado[] retorno = new ParOrdenado[3];
+			retorno[0]=p1;
+			retorno[1]=p4;
+			retorno[2]=p3;
+			return retorno;
+		}
+		
+	}
+	public ParOrdenado[] colisionPiso() {
+		if(rotacion==1) {
+			ParOrdenado[] retorno = new ParOrdenado[3];
+			retorno[0]=p2;
+			retorno[1]=p3;
+			retorno[2]=p4;
+			return retorno;
+		}
+		else if (rotacion==2) {
+			ParOrdenado[] retorno = new ParOrdenado[2];
+			retorno[0]=p3;
+			retorno[1]=p4;
+			return retorno;
+		}
+		else if (rotacion==3) {
+			ParOrdenado[] retorno = new ParOrdenado[3];
+			retorno[0]=p3;
+			retorno[1]=p1;
+			retorno[2]=p4;
+			return retorno;
+		}
+		else {
+			ParOrdenado[] retorno = new ParOrdenado[2];
+			retorno[0]=p2;
+			retorno[1]=p3;
+			return retorno;
+		}		
+	}
 }

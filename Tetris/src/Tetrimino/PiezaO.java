@@ -46,4 +46,22 @@ public class PiezaO extends Tetrimino{
 		rotacion=4;
 		
 	}
+	public ParOrdenado[] colisionIzquierda() {
+		ParOrdenado[] retorno = new ParOrdenado[2];
+		retorno[0]=p1;
+		retorno[1]=p3;
+		return retorno;		
+	}
+	public ParOrdenado[] colisionDerecha() {
+		ParOrdenado[] retorno = new ParOrdenado[2];
+		retorno[0]=p2;
+		retorno[1]=p4;
+		return retorno;		
+	}
+	public ParOrdenado[] colisionPiso() {
+		ParOrdenado[] retorno = new ParOrdenado[2];
+		retorno[0]=p3;
+		retorno[1]=p4;
+		return retorno;		
+	}
 }
