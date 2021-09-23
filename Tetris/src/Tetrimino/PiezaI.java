@@ -5,11 +5,12 @@ import ParOrdenado.ParOrdenado;
 
 public class PiezaI extends Tetrimino{
 	//atributos de instancia
-	private ParOrdenado p1,p2,p3,p4;
+	
 	private int rotacion;
 	ParOrdenado [] coordenadasActuales;
 	//constructor
 	public PiezaI() {
+		color='c';
 		p1= new ParOrdenado(0,3);
 		p2= new ParOrdenado(0,4);
 		p3= new ParOrdenado(0,5);
@@ -23,12 +24,21 @@ public class PiezaI extends Tetrimino{
 		rotacion=1;
 		
 	}
-	public void cambiarPosicion(int x, int y) {
-		
-		
-	}
 
-	public void posicion2() {
+	
+
+	protected void posicion1() {
+		int piso=p3.getX();
+		p1.setX(piso);
+		p1.setY(p1.getY()-1);
+		p3.setY(p3.getY()+1);
+		p2.setX(piso);
+		p4.setY(p4.getY()+2);
+		p4.setX(piso);
+		rotacion=1;
+	
+	}
+	protected void posicion2() {
 		int columna=p3.getY();
 		p1.setY(columna);
 		p1.setX(p1.getX()-1);
@@ -39,7 +49,7 @@ public class PiezaI extends Tetrimino{
 		rotacion=2;
 	
 	}
-	public void posicion3() {
+	protected void posicion3() {
 		int piso=p3.getX();
 		p1.setX(piso);
 		p1.setY(p1.getY()+1);
@@ -52,7 +62,7 @@ public class PiezaI extends Tetrimino{
 		rotacion=3;
 		
 	}
-	public void posicion4() {
+	protected void posicion4() {
 		int columna=p3.getY();
 		p1.setY(columna);
 		p1.setX(p1.getX()+1);
@@ -63,16 +73,91 @@ public class PiezaI extends Tetrimino{
 		rotacion=4;
 	
 	}
-	public void posicion1() {
-		int piso=p3.getX();
-		p1.setX(piso);
-		p1.setY(p1.getY()-1);
-		p3.setY(p3.getY()+1);
-		p2.setX(piso);
-		p4.setY(p4.getY()+2);
-		p4.setX(piso);
-		rotacion=1;
-	
+	//consultas
+	public ParOrdenado[] colisionIzquierda() {
+		if(rotacion==1) {
+			ParOrdenado[] retorno = new ParOrdenado[1];
+			retorno[0]=p1;
+			return retorno;
+		}
+		else if (rotacion==2) {
+			ParOrdenado[] retorno = new ParOrdenado[4];
+			retorno[0]=p1;
+			retorno[1]=p2;
+			retorno[2]=p3;
+			retorno[3]=p4;
+			return retorno;
+		}
+		else if (rotacion==3) {
+			ParOrdenado[] retorno = new ParOrdenado[1];
+			retorno[0]=p4;
+			return retorno;
+		}
+		else {
+			ParOrdenado[] retorno = new ParOrdenado[4];
+			retorno[0]=p4;
+			retorno[1]=p3;
+			retorno[2]=p2;
+			retorno[3]=p1;
+			return retorno;
+		}		
 	}
-	
+	public ParOrdenado[] colisionDerecha() {
+		if(rotacion==1) {
+			ParOrdenado[] retorno = new ParOrdenado[1];
+			retorno[0]=p4;
+			return retorno;
+		}
+		else if (rotacion==2) {
+			ParOrdenado[] retorno = new ParOrdenado[4];
+			retorno[0]=p1;
+			retorno[1]=p2;
+			retorno[2]=p3;
+			retorno[3]=p4;
+			return retorno;
+		}
+		else if (rotacion==3) {
+			ParOrdenado[] retorno = new ParOrdenado[1];
+			retorno[0]=p1;
+			return retorno;
+		}
+		else {
+			ParOrdenado[] retorno = new ParOrdenado[4];
+			retorno[0]=p4;
+			retorno[1]=p3;
+			retorno[2]=p2;
+			retorno[3]=p1;
+			return retorno;
+		}
+
+	}
+	public ParOrdenado[] colisionPiso() {
+		if(rotacion==1) {
+			ParOrdenado[] retorno = new ParOrdenado[4];
+			retorno[0]=p1;
+			retorno[1]=p2;
+			retorno[2]=p3;
+			retorno[3]=p4;			
+			return retorno;
+		}
+		else if (rotacion==2) {
+			ParOrdenado[] retorno = new ParOrdenado[0];
+			retorno[0]=p4;
+			return retorno;
+		}
+		else if (rotacion==3) {
+			ParOrdenado[] retorno = new ParOrdenado[4];
+			retorno[0]=p1;
+			retorno[1]=p4;
+			retorno[2]=p3;
+			retorno[3]=p2;
+			return retorno;
+		}
+		else {
+			ParOrdenado[] retorno = new ParOrdenado[1];
+			retorno[0]=p1;
+			return retorno;
+		}
+
+	}
 }
