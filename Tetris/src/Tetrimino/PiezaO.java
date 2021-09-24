@@ -46,19 +46,19 @@ public class PiezaO extends Tetrimino{
 		rotacion=4;
 		
 	}
-	public ParOrdenado[] colisionIzquierda() {
+	public ParOrdenado[] colisionIzquierda(int rotacion) {
 		ParOrdenado[] retorno = new ParOrdenado[2];
 		retorno[0]=p1;
 		retorno[1]=p3;
 		return retorno;		
 	}
-	public ParOrdenado[] colisionDerecha() {
+	public ParOrdenado[] colisionDerecha(int rotacion) {
 		ParOrdenado[] retorno = new ParOrdenado[2];
 		retorno[0]=p2;
 		retorno[1]=p4;
 		return retorno;		
 	}
-	public ParOrdenado[] colisionPiso() {
+	public ParOrdenado[] colisionPiso(int rotacion) {
 		ParOrdenado[] retorno = new ParOrdenado[2];
 		retorno[0]=p3;
 		retorno[1]=p4;

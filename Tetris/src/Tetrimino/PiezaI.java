@@ -74,7 +74,7 @@ public class PiezaI extends Tetrimino{
 	
 	}
 	//consultas
-	public ParOrdenado[] colisionIzquierda() {
+	public ParOrdenado[] colisionIzquierda(int rotacion) {
 		if(rotacion==1) {
 			ParOrdenado[] retorno = new ParOrdenado[1];
 			retorno[0]=p1;
@@ -102,7 +102,7 @@ public class PiezaI extends Tetrimino{
 			return retorno;
 		}		
 	}
-	public ParOrdenado[] colisionDerecha() {
+	public ParOrdenado[] colisionDerecha(int rotacion) {
 		if(rotacion==1) {
 			ParOrdenado[] retorno = new ParOrdenado[1];
 			retorno[0]=p4;
@@ -131,7 +131,7 @@ public class PiezaI extends Tetrimino{
 		}
 
 	}
-	public ParOrdenado[] colisionPiso() {
+	public ParOrdenado[] colisionPiso(int rotacion) {
 		if(rotacion==1) {
 			ParOrdenado[] retorno = new ParOrdenado[4];
 			retorno[0]=p1;

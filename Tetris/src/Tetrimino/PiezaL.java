@@ -59,7 +59,7 @@ public class PiezaL extends Tetrimino {
 		p4.setY(p4.getY()-1);
 		rotacion=4;
 	}
-	public ParOrdenado[] colisionIzquierda() {
+	public ParOrdenado[] colisionIzquierda(int rotacion) {
 		if(rotacion==1) {
 			ParOrdenado[] retorno = new ParOrdenado[2];
 			retorno[0]=p1;
@@ -87,7 +87,7 @@ public class PiezaL extends Tetrimino {
 			return retorno;
 		}		
 	}
-	public ParOrdenado[] colisionDerecha() {
+	public ParOrdenado[] colisionDerecha(int rotacion) {
 		if(rotacion==1) {
 			ParOrdenado[] retorno = new ParOrdenado[2];
 			retorno[0]=p1;
@@ -116,7 +116,7 @@ public class PiezaL extends Tetrimino {
 		}
 		
 	}
-	public ParOrdenado[] colisionPiso() {
+	public ParOrdenado[] colisionPiso(int rotacion) {
 		if(rotacion==1) {
 			ParOrdenado[] retorno = new ParOrdenado[3];
 			retorno[0]=p2;
