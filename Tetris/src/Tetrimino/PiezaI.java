@@ -15,7 +15,7 @@ public class PiezaI extends Tetrimino{
 		p2= new ParOrdenado(0,4);
 		p3= new ParOrdenado(0,5);
 		p4= new ParOrdenado(0,6);
-		coordenadasActuales = new ParOrdenado[3];
+		coordenadasActuales = new ParOrdenado[4];
 		coordenadasActuales[0]=p1;
 		coordenadasActuales[1]=p2;
 		coordenadasActuales[2]=p3;
