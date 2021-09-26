@@ -13,12 +13,17 @@ public class Timer implements Runnable {
     
     public Timer(Logica log) {
       miLogica=log;
-      tiempoBase=System.currentTimeMillis();
-      correr=true;
+      tiempoBase=0;
+      correr=false;
     }
-    
+
     
     //metodos
+    public void comenzar(){
+     correr=true;
+    tiempoBase=System.currentTimeMillis();
+    }
+    
     
     public void run() {
       while(correr) {

@@ -5,6 +5,7 @@ import java.util.Random;
 import Bloque.Bloque;
 import ParOrdenado.ParOrdenado;
 import Tetrimino.PiezaI;
+import Tetrimino.PiezaJ;
 import Tetrimino.PiezaL;
 import Tetrimino.PiezaO;
 import Tetrimino.PiezaS;
@@ -21,10 +22,15 @@ public class Grilla {
 	//constructor
 	
 	public Grilla () {
-		casilleros = new Bloque[21][10];
-		this.generarTetrimino();
-		this.actualizarTetriminoActual();
-	}
+        casilleros = new Bloque[21][10];
+        this.generarTetrimino();
+        this.actualizarTetriminoActual();
+        for(int filas=0; filas<casilleros.length ; filas++) {
+          for(int columnas=0; columnas<casilleros[0].length; columnas++) {
+            casilleros[filas][columnas]= new Bloque();
+          }
+        }
+    }
 	
 	//metodos
 	

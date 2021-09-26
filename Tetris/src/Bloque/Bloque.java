@@ -5,7 +5,7 @@ public class Bloque {
 	boolean lleno;
 	
 	//constructor
-	Bloque () {
+	public Bloque () {
 		lleno = false;
 	}
 	

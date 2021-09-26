@@ -26,6 +26,7 @@ public class Logica {
     //metodos
     public void comenzarJuego(){
       jugando=true;
+      miTimer.comenzar();
     }
 
     public void moverTetIzq () {
@@ -41,30 +42,32 @@ public class Logica {
     }
 
     public void moverTetAbajo (){
-      boolean bajo=  miGrilla.moverAbajo(); 
-      if(!bajo){ 
-        int filasLlenas=0;
-        ParOrdenado filas= miGrilla.getTetriminoFilas();
-        int[] filasABorrar= new int[4];
-        for(int i=filas.getX(); i>=filas.getY(); i-- ){
-          if(miGrilla.filaLlena(i)) {
-            filasABorrar[filasLlenas]=i;
-            filasLlenas++;
+      if(jugando) {
+        boolean bajo=  miGrilla.moverAbajo(); 
+        if(!bajo){ 
+          int filasLlenas=0;
+          ParOrdenado filas= miGrilla.getTetriminoFilas();
+          int[] filasABorrar= new int[4];
+          for(int i=filas.getX(); i>=filas.getY(); i-- ){
+            if(miGrilla.filaLlena(i)) {
+              filasABorrar[filasLlenas]=i;
+              filasLlenas++;
+            }
+          }
+          if(filasLlenas==0 && filas.getY()<=3) {
+            if(miGrilla.grillaLlena()) {
+              this.terminarJuego();
+            }
+          }
+          if(filasLlenas>0){
+            for(int i=1; i<=filasLlenas; i++){
+              miGrilla.borrarFilaLlena(filasABorrar[filasLlenas-i]);
+            }
+            this.sumarPuntos(filasLlenas);
           }
         }
-        if(filasLlenas==0 && filas.getY()<=3) {
-          if(miGrilla.grillaLlena()) {
-            this.terminarJuego();	  
-          }
-        }
-        if(filasLlenas>0){
-          for(int i=1; i<=filasLlenas; i++){	
-            miGrilla.borrarFilaLlena(filasABorrar[filasLlenas-i]);
-          }
-          this.sumarPuntos(filasLlenas);
-        }
+       }
      }
-    }
    
 
     public void girarTetrimino () {
