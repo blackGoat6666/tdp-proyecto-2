@@ -1,5 +1,7 @@
 package Logica;
 
+import javax.swing.JLabel;
+
 import GUI.GUI;
 import Grilla.Grilla;
 import ParOrdenado.ParOrdenado;
@@ -7,20 +9,22 @@ import Timer.Timer;
 
 public class Logica {
 
-    // atributos
+	// atributos
     private int puntuacion;
     private Grilla miGrilla;
-    private GUI miGUI;
     private boolean jugando;
     private Timer miTimer;
-    
+    private JLabel lbltiempo;
+    private JLabel lblpuntos;
+
     //constructor
-    public Logica (GUI interfaz) {
+    public Logica (JLabel tiempo, JLabel puntos) {
         puntuacion = 0;
         miGrilla = new Grilla();
-        miGUI=interfaz;
         jugando=false;
         miTimer=new Timer(this);
+        lbltiempo=tiempo;
+        lblpuntos=puntos;
     }
 
     //metodos
@@ -82,22 +86,23 @@ public class Logica {
     }
 
     public void sumarPuntos (int cantFilas) {
-      switch (cantFilas) 
-       {
-  	    case 1:  puntuacion+=100;
-                     break;
-        case 2:  puntuacion+=200;
-                     break;
-        case 3:  puntuacion+=500;
-                     break;
-        case 4: puntuacion+=800;
-                     break;
+        switch (cantFilas) 
+         {
+            case 1:  puntuacion+=100;
+                       break;
+          case 2:  puntuacion+=200;
+                       break;
+          case 3:  puntuacion+=500;
+                       break;
+          case 4: puntuacion+=800;
+                       break;
+        }
+        lblpuntos.setText(""+puntuacion);
       }
-    }
 
-    public void setTiempo(String tiempo) {
-      miGUI.setLabelTiempo(tiempo); 
-    }
+      public void setTiempo(String tiempo) {
+        lbltiempo.setText(tiempo);
+      }
     
     //consultas
 

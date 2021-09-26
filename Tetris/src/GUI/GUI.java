@@ -31,9 +31,10 @@ import javax.swing.SwingConstants;
 public class GUI {
 	
 	private JFrame frmTetris;
-	private Logica miLogica;
-	private JLabel lblTiempoTranscurrido;
-	Thread tiempo;
+    private Logica miLogica;
+    private JLabel lblTiempoTranscurrido;
+    private JLabel lblpuntuacionModificable;
+    Thread tiempo;
 	/**
 	 * Launch the application.
 	 */
@@ -54,15 +55,20 @@ public class GUI {
 	 * Create the application.
 	 */
 	public GUI() {
-	    lblTiempoTranscurrido= new JLabel("00:00");
-	    lblTiempoTranscurrido.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTiempoTranscurrido.setForeground(new Color(255, 255, 255));
-		lblTiempoTranscurrido.setFont(new Font("Dialog", Font.PLAIN, 26));
-		lblTiempoTranscurrido.setBounds(10, 43, 144, 34);
-		miLogica = new Logica(this);
-		initialize();
-		tiempo=new Thread(miLogica.getTimer());
-	}
+        lblTiempoTranscurrido= new JLabel("00:00");
+        lblTiempoTranscurrido.setHorizontalAlignment(SwingConstants.CENTER);
+        lblTiempoTranscurrido.setForeground(new Color(255, 255, 255));
+        lblTiempoTranscurrido.setFont(new Font("Dialog", Font.PLAIN, 26));
+        lblTiempoTranscurrido.setBounds(10, 43, 144, 34);
+        lblpuntuacionModificable = new JLabel("0000000\r\n");
+        lblpuntuacionModificable.setFont(new Font("Bauhaus 93", Font.PLAIN, 50));
+        lblpuntuacionModificable.setForeground(new Color(255, 255, 255));
+        lblpuntuacionModificable.setBackground(new Color(255, 255, 255));
+        lblpuntuacionModificable.setBounds(27, 66, 234, 58);
+        miLogica = new Logica(lblTiempoTranscurrido,lblpuntuacionModificable);
+        initialize();
+        tiempo=new Thread(miLogica.getTimer());
+    }
 
 	/**
 	 * Initialize the contents of the frame.
@@ -130,6 +136,7 @@ public class GUI {
 		btnJugar.addActionListener(new ActionListener(){
 		  public void actionPerformed(ActionEvent e) {
 		    comenzarJuego();
+		    btnJugar.setEnabled(false);
 		  }
 		  private void comenzarJuego() {
 		    miLogica.comenzarJuego();  

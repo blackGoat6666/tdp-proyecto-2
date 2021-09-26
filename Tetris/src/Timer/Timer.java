@@ -47,6 +47,7 @@ public class Timer implements Runnable {
     private String getTotalTime () {
       long segundos= this.segundos();
       long minutos= segundos/60;
+      segundos=segundos%60;
       String retorno= new String("");
       retorno=(minutos+":");
       if(minutos<10) {
