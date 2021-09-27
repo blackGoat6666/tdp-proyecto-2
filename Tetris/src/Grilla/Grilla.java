@@ -127,7 +127,6 @@ public class Grilla {
 	
 	public boolean moverAbajo() { //retorna true cuando pudo bajar, false cuando no pudo. Es decir, false si colisionó
 	  ParOrdenado[] posicionActual=tetriminoActual.colisionPiso(tetriminoActual.getRotacion());	
-	  System.out.println(tetriminoActual.getPosicion()[1].getX());
 	  int puedenMoverse=0;
 	  for(int i=0; i<posicionActual.length ; i++) {
 	    if(posicionActual[i].getX()<20 && casilleros[posicionActual[i].getX()+1][posicionActual[i].getY()].getEstado()==false ) {
@@ -136,6 +135,10 @@ public class Grilla {
 	  }
 	  if(puedenMoverse==posicionActual.length){
 		miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), null);
+		/*System.out.println(tetriminoActual.getPosicion()[0].getX()+""+tetriminoActual.getPosicion()[0].getY());
+		System.out.println(tetriminoActual.getPosicion()[1].getX()+""+tetriminoActual.getPosicion()[1].getY());
+		System.out.println(tetriminoActual.getPosicion()[2].getX()+""+tetriminoActual.getPosicion()[2].getY());
+		System.out.println(tetriminoActual.getPosicion()[3].getX()+""+tetriminoActual.getPosicion()[3].getY());*/
 	    tetriminoActual.cambiarPosicion(1, 0);
 	    miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource("/Images/BloqueAmarillo.png")));
 	    return true;
@@ -153,8 +156,7 @@ public class Grilla {
 	
 	private void generarTetrimino() {
 	  Random rand= new Random();
-	  int tetri= rand.nextInt(7);
-	  System.out.println(tetri);
+	  int tetri= rand.nextInt(1);
 	  switch (tetri) 
       {
 	      case 0:  tetriminoSiguiente= new PiezaT();
@@ -173,7 +175,7 @@ public class Grilla {
                    break;
         
       }
-	  System.out.println(tetriminoSiguiente.getPosicion()[0].getX());
+	  System.out.println(tetri);
 	}
 	
 	public void actualizarTetriminoActual() {

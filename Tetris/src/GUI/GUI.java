@@ -170,7 +170,7 @@ public class GUI {
 		for (int i =  0; i < 21; i++) {
 	    	for (int j =  0; j < 10; j++) {
 	    		labels[i][j] = new JLabel("Label" + i+ j);
-	    		labels[i][j].setBounds(2+28*i, 1+28*j, 28, 28);
+	    		labels[i][j].setBounds(1+28*j, 2+28*i , 28, 28);
 	    		labels[i][j].setText(null);
 	    		panelGrilla.add(labels[i][j]);
 	    	}
@@ -198,7 +198,7 @@ public class GUI {
 		lblpuntuacionModificable.setText(puntuacion);
 	}
 	public void graficarBloque(ImageIcon imageIcon, int labelX, int labelY) {
-		labels[labelX][labelY].setIcon((javax.swing.Icon) imageIcon);
+		labels[labelX][labelY].setIcon( imageIcon);
 	}
 	
 }
