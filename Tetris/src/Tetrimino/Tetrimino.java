@@ -41,6 +41,11 @@ public abstract class Tetrimino {
                 else 
                     this.posicion1(); 
     }
+    
+    public char getColor() {
+    	return color;
+    }
+    
     protected abstract void posicion1();
     protected abstract void posicion2();
     protected abstract void posicion3();
