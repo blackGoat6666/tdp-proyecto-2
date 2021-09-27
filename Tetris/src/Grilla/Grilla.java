@@ -23,17 +23,27 @@ public class Grilla {
 	
 	//constructor
 	
+<<<<<<< HEAD
 	public Grilla (Logica log) {
         casilleros = new Bloque[21][10];
         this.generarTetrimino();
         this.actualizarTetriminoActual();
         //System.out.println(tetriminoActual.getPosicion()[1].getX()+tetriminoActual.getPosicion()[2].getX()+tetriminoActual.getPosicion()[3].getX());
+=======
+	public Grilla () {
+        casilleros = new Bloque[21][10];
+        this.generarTetrimino();
+        this.actualizarTetriminoActual();
+>>>>>>> refs/remotes/origin/main
         for(int filas=0; filas<casilleros.length ; filas++) {
           for(int columnas=0; columnas<casilleros[0].length; columnas++) {
             casilleros[filas][columnas]= new Bloque();
           }
         }
+<<<<<<< HEAD
         miLogica = log;
+=======
+>>>>>>> refs/remotes/origin/main
     }
 	
 	//metodos

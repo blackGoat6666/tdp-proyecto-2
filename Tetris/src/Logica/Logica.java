@@ -1,6 +1,10 @@
 package Logica;
 
+<<<<<<< HEAD
 import javax.swing.ImageIcon;
+=======
+import javax.swing.JLabel;
+>>>>>>> refs/remotes/origin/main
 
 import GUI.GUI;
 import Grilla.Grilla;
@@ -12,17 +16,24 @@ public class Logica {
     // atributos
     private int puntuacion;
     private Grilla miGrilla;
-    private GUI miGUI;
     private boolean jugando;
     private Timer miTimer;
+    private JLabel lbltiempo;
+    private JLabel lblpuntos;
     
     //constructor
-    public Logica (GUI interfaz) {
+    public Logica (JLabel tiempo, JLabel puntos) {
         puntuacion = 0;
+<<<<<<< HEAD
         miGUI=interfaz;
+=======
+        miGrilla = new Grilla();
+>>>>>>> refs/remotes/origin/main
         jugando=false;
         miGrilla = new Grilla(this);
         miTimer=new Timer(this);
+        lbltiempo=tiempo;
+        lblpuntos=puntos;
     }
 
     //metodos
@@ -30,7 +41,11 @@ public class Logica {
       jugando=true;
       miTimer.comenzar();
       puntuacion=0;
+<<<<<<< HEAD
       miGUI.setLabelPuntuacion("0000");
+=======
+      lblpuntos.setText("0000");
+>>>>>>> refs/remotes/origin/main
     }
 
     public void moverTetIzq () {
@@ -97,6 +112,7 @@ public class Logica {
         case 4: puntuacion+=800;
                      break;
       }
+<<<<<<< HEAD
       miGUI.setLabelPuntuacion(""+puntuacion);
     }
 
@@ -110,6 +126,13 @@ public class Logica {
         		miGUI.graficarBloque(imageIcon, posiciones[i].getX(), posiciones[i].getY());
         	}
     	}
+=======
+      lblpuntos.setText(""+puntuacion);
+    }
+
+    public void setTiempo(String tiempo) {
+      lbltiempo.setText(tiempo);  
+>>>>>>> refs/remotes/origin/main
     }
     
     //consultas
