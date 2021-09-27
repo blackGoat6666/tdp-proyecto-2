@@ -25,9 +25,19 @@ public class PiezaS extends Tetrimino{
 	}
 	@Override
 	public void cambiarPosicion(int x, int y) {
-		// TODO Auto-generated method stub
-		
-	}
+        if (y !=0) {
+            p1.setY(p1.getY()+y);
+            p2.setY(p2.getY()+y);
+            p3.setY(p3.getY()+y);
+            p4.setY(p4.getY()+y);
+        }
+        if(x==1) {
+            p1.setX(p1.getX()+1);
+            p2.setX(p2.getX()+1);
+            p3.setX(p3.getX()+1);
+            p4.setX(p4.getX()+1);
+        }
+    }
 	protected void posicion1() {
 		p1.setX(p1.getX()-2);
 		p2.setY(p2.getY()+2);
