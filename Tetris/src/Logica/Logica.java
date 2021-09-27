@@ -9,14 +9,14 @@ import Timer.Timer;
 
 public class Logica {
 
-	// atributos
+    // atributos
     private int puntuacion;
     private Grilla miGrilla;
     private boolean jugando;
     private Timer miTimer;
     private JLabel lbltiempo;
     private JLabel lblpuntos;
-
+    
     //constructor
     public Logica (JLabel tiempo, JLabel puntos) {
         puntuacion = 0;
@@ -31,6 +31,8 @@ public class Logica {
     public void comenzarJuego(){
       jugando=true;
       miTimer.comenzar();
+      puntuacion=0;
+      lblpuntos.setText("0000");
     }
 
     public void moverTetIzq () {
@@ -86,31 +88,28 @@ public class Logica {
     }
 
     public void sumarPuntos (int cantFilas) {
-        switch (cantFilas) 
-         {
-            case 1:  puntuacion+=100;
-                       break;
-          case 2:  puntuacion+=200;
-                       break;
-          case 3:  puntuacion+=500;
-                       break;
-          case 4: puntuacion+=800;
-                       break;
-        }
-        lblpuntos.setText(""+puntuacion);
+      switch (cantFilas) 
+       {
+          case 1:  puntuacion+=100;
+                     break;
+        case 2:  puntuacion+=200;
+                     break;
+        case 3:  puntuacion+=500;
+                     break;
+        case 4: puntuacion+=800;
+                     break;
       }
+      lblpuntos.setText(""+puntuacion);
+    }
 
-      public void setTiempo(String tiempo) {
-        lbltiempo.setText(tiempo);
-      }
+    public void setTiempo(String tiempo) {
+      lbltiempo.setText(tiempo);  
+    }
     
     //consultas
 
-    public int getPuntuacion () {
-        return puntuacion;
-    }
-  
+    
     public Timer getTimer() {
-      return miTimer;	
+      return miTimer;    
     }
 }
