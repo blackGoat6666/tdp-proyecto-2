@@ -46,6 +46,9 @@ public class PiezaO extends Tetrimino{
 		rotacion=4;
 		
 	}
+	public ParOrdenado[] getPosicion() {
+        return coordenadasActuales;
+    }
 	public ParOrdenado[] colisionIzquierda(int rotacion) {
 		ParOrdenado[] retorno = new ParOrdenado[2];
 		retorno[0]=p1;

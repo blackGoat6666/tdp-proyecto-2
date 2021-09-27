@@ -74,6 +74,9 @@ public class PiezaI extends Tetrimino{
 	
 	}
 	//consultas
+	public ParOrdenado[] getPosicion() {
+        return coordenadasActuales;
+    }
 	public ParOrdenado[] colisionIzquierda(int rotacion) {
 		if(rotacion==1) {
 			ParOrdenado[] retorno = new ParOrdenado[1];

@@ -2,10 +2,10 @@ package Bloque;
 
 public class Bloque {
 	// atributos
-	boolean lleno;
+	private boolean lleno;
 	
 	//constructor
-	Bloque () {
+	public Bloque () {
 		lleno = false;
 	}
 	

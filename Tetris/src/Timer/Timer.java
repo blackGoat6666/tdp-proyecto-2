@@ -13,12 +13,17 @@ public class Timer implements Runnable {
     
     public Timer(Logica log) {
       miLogica=log;
-      tiempoBase=System.currentTimeMillis();
-      correr=true;
+      tiempoBase=0;
+      correr=false;
     }
-    
+
     
     //metodos
+    public void comenzar(){
+     correr=true;
+    tiempoBase=System.currentTimeMillis();
+    }
+    
     
     public void run() {
       while(correr) {
@@ -42,6 +47,7 @@ public class Timer implements Runnable {
     private String getTotalTime () {
       long segundos= this.segundos();
       long minutos= segundos/60;
+      segundos=segundos%60;
       String retorno= new String("");
       retorno=(minutos+":");
       if(minutos<10) {

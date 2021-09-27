@@ -50,6 +50,9 @@ public class PiezaZ extends Tetrimino{
 		p2.setX(p2.getX()-2);
 		rotacion=4;
 	}
+	public ParOrdenado[] getPosicion() {
+        return coordenadasActuales;
+    }
 	public ParOrdenado[] colisionIzquierda(int rotacion) {
 		if(rotacion==1) {
 			ParOrdenado[] retorno = new ParOrdenado[2];
