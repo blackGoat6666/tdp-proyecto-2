@@ -33,10 +33,7 @@ public class GUI {
 	private JFrame frmTetris;
 	private Logica miLogica;
 	private JLabel lblTiempoTranscurrido;
-<<<<<<< HEAD
 	JLabel labels[][] = new JLabel[21][10];
-=======
->>>>>>> refs/remotes/origin/main
 	private JLabel lblpuntuacionModificable;
 	Thread tiempo;
 	/**
@@ -69,11 +66,7 @@ public class GUI {
 		lblpuntuacionModificable.setForeground(new Color(255, 255, 255));
 		lblpuntuacionModificable.setBackground(new Color(255, 255, 255));
 		lblpuntuacionModificable.setBounds(27, 66, 234, 58);
-<<<<<<< HEAD
 		miLogica = new Logica(this);
-=======
-		miLogica = new Logica(lblTiempoTranscurrido,lblpuntuacionModificable);
->>>>>>> refs/remotes/origin/main
 		initialize();
 		tiempo=new Thread(miLogica.getTimer());
 	}
@@ -198,7 +191,6 @@ public class GUI {
 			}
 		});
 	}
-<<<<<<< HEAD
 	public void setLabelTiempo(String tiempo) {
 		  lblTiempoTranscurrido.setText(tiempo);
 	}
@@ -207,8 +199,6 @@ public class GUI {
 	}
 	public void graficarBloque(ImageIcon imageIcon, int labelX, int labelY) {
 		labels[labelX][labelY].setIcon((javax.swing.Icon) imageIcon);
-}
-=======
->>>>>>> refs/remotes/origin/main
+	}
 	
 }

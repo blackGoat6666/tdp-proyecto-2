@@ -23,34 +23,22 @@ public class Grilla {
 	
 	//constructor
 	
-<<<<<<< HEAD
+
 	public Grilla (Logica log) {
         casilleros = new Bloque[21][10];
-        this.generarTetrimino();
-        this.actualizarTetriminoActual();
-        //System.out.println(tetriminoActual.getPosicion()[1].getX()+tetriminoActual.getPosicion()[2].getX()+tetriminoActual.getPosicion()[3].getX());
-=======
-	public Grilla () {
-        casilleros = new Bloque[21][10];
-        this.generarTetrimino();
-        this.actualizarTetriminoActual();
->>>>>>> refs/remotes/origin/main
         for(int filas=0; filas<casilleros.length ; filas++) {
-          for(int columnas=0; columnas<casilleros[0].length; columnas++) {
-            casilleros[filas][columnas]= new Bloque();
+            for(int columnas=0; columnas<casilleros[0].length; columnas++) {
+              casilleros[filas][columnas]= new Bloque();
+            }
           }
-        }
-<<<<<<< HEAD
+        this.generarTetrimino();
+        this.actualizarTetriminoActual();
         miLogica = log;
-=======
->>>>>>> refs/remotes/origin/main
     }
 	
 	//metodos
 	
-	/*public void setLogica(Logica log) {
-		miLogica = log;
-	}*/
+	
 	
 	public void borrarFilaLlena(int fila) {
 	  for(int i=0; i<casilleros[0].length; i++){
@@ -139,7 +127,7 @@ public class Grilla {
 	
 	public boolean moverAbajo() { //retorna true cuando pudo bajar, false cuando no pudo. Es decir, false si colisionó
 	  ParOrdenado[] posicionActual=tetriminoActual.colisionPiso(tetriminoActual.getRotacion());	
-	  //System.out.println(tetriminoActual.getPosicion()[1].getX()+tetriminoActual.getPosicion()[2].getX()+tetriminoActual.getPosicion()[3].getX());
+	  System.out.println(tetriminoActual.getPosicion()[1].getX());
 	  int puedenMoverse=0;
 	  for(int i=0; i<posicionActual.length ; i++) {
 	    if(posicionActual[i].getX()<20 && casilleros[posicionActual[i].getX()+1][posicionActual[i].getY()].getEstado()==false ) {
