@@ -5,15 +5,14 @@ import ParOrdenado.ParOrdenado;
 public class PiezaT extends Tetrimino{
 	//atributos de instancia
 	
-	private int rotacion;
 	ParOrdenado [] coordenadasActuales;
 	//constructor
 	public PiezaT() {
 		color="/Images/BloqueVioleta.png";
-		p1= new ParOrdenado(0,5);
-		p2= new ParOrdenado(1,4);
-		p3= new ParOrdenado(1,5);
-		p4= new ParOrdenado(1,6);
+		p1= new ParOrdenado(0,4);
+		p2= new ParOrdenado(1,3);
+		p3= new ParOrdenado(1,4);
+		p4= new ParOrdenado(1,5);
 		coordenadasActuales = new ParOrdenado[4];
 		coordenadasActuales[0]=p1;
 		coordenadasActuales[1]=p2;
@@ -24,8 +23,7 @@ public class PiezaT extends Tetrimino{
 	}
 	
 	public void cambiarPosicion(int x, int y) {
-		System.out.println(coordenadasActuales[0].getX()+"oa"+coordenadasActuales[0].getY());
-        if (y !=0) {
+		if (y !=0) {
             p1.setY(p1.getY()+y);
             p2.setY(p2.getY()+y);
             p3.setY(p3.getY()+y);

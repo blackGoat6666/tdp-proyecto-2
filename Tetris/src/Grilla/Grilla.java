@@ -13,6 +13,7 @@ import Tetrimino.PiezaS;
 import Tetrimino.PiezaT;
 import Tetrimino.PiezaZ;
 import Tetrimino.Tetrimino;
+import javax.swing.ImageIcon;
 
 public class Grilla {
 	// atributos
@@ -69,7 +70,7 @@ public class Grilla {
 	  if(puedenMoverse==posicionActual.length){
 		miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), null);
 	    tetriminoActual.cambiarPosicion(0, -1);
-	    miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource("/Images/BloqueAmarillo.png")));
+	    miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource(tetriminoActual.getColor())));
 	  }
 	}
 	
@@ -84,7 +85,7 @@ public class Grilla {
 	  if(puedenMoverse==posicionActual.length){
 	    miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), null);
 	    tetriminoActual.cambiarPosicion(0, 1);
-	    miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource("/Images/BloqueAmarillo.png")));
+	    miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource(tetriminoActual.getColor())));
 	  }
 	}
 	
@@ -155,11 +156,11 @@ public class Grilla {
 	
 	private void generarTetrimino() {
 	  Random rand= new Random();
-	  int tetri= rand.nextInt(9);
+	  int tetri= rand.nextInt(8);
 	  switch (tetri) 
       {
-	      case 7,0,9:  tetriminoSiguiente= new PiezaT();
-	  
+	      case 0:  tetriminoSiguiente= new PiezaT();
+	               break;
           case 1:  tetriminoSiguiente= new PiezaJ();
                    break;
           case 2:  tetriminoSiguiente= new PiezaL();
@@ -172,6 +173,8 @@ public class Grilla {
                    break;
           case 6:  tetriminoSiguiente= new PiezaZ();
                    break;
+          case 7:  tetriminoSiguiente= new PiezaT();
+                   break;         
         
       }
 	}

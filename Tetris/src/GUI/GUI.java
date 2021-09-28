@@ -14,7 +14,6 @@ import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
 
 import Logica.Logica;
-import Timer.Timer;
 
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
@@ -25,6 +24,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.SwingConstants;
 
 
@@ -176,20 +177,23 @@ public class GUI {
 	    	}
 	    }
 		// manejar eventos
-		frmTetris.addKeyListener(new KeyAdapter() {
-			@Override
+		frmTetris.addKeyListener(new KeyAdapter(){
 			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode () == KeyEvent.VK_UP) {
+				System.out.println("algo toque");
+				if (e.getKeyCode() == KeyEvent.VK_UP) {
 					miLogica.girarTetrimino();
+					System.out.println("gira gil");
 				}
 				if(e.getKeyCode()==KeyEvent.VK_LEFT) {
 					miLogica.moverTetIzq();
+					System.out.println("arriba nico del caño");
 				}
 				if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
 					miLogica.moverTetDer();
+					System.out.println("milei");
 				}
-			}
-		});
+		   }
+		 });
 	}
 	public void setLabelTiempo(String tiempo) {
 		  lblTiempoTranscurrido.setText(tiempo);

@@ -5,7 +5,6 @@ import ParOrdenado.ParOrdenado;
 public class PiezaZ extends Tetrimino{
 	//atributos de instancia
 	
-	private int rotacion;
 	ParOrdenado [] coordenadasActuales;
 	//constructor
 	public PiezaZ() {
