@@ -121,27 +121,22 @@ public class Grilla {
 	  }
 	  miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), null);
 	  tetriminoActual.rotar();
-	  miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource("/Images/BloqueAmarillo.png")));
+	  miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource(tetriminoActual.getColor())));
 	  return true;
 	}
 	
 	public boolean moverAbajo() { //retorna true cuando pudo bajar, false cuando no pudo. Es decir, false si colisionó
 	  ParOrdenado[] posicionActual=tetriminoActual.colisionPiso(tetriminoActual.getRotacion());	
 	  int puedenMoverse=0;
-	  
 	  for(int i=0; i<posicionActual.length ; i++) {
-	    if(posicionActual[i].getX()<20 && casilleros[(posicionActual[i].getX()+1)][posicionActual[i].getY()].getEstado()==false ) {
+	    if(posicionActual[i].getX()<=19 && casilleros[(posicionActual[i].getX()+1)][posicionActual[i].getY()].getEstado()==false ) {
 		  puedenMoverse++;
-	    }
+		}
 	  }
 	  if(puedenMoverse==posicionActual.length){
 		miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), null);
-		/*System.out.println(tetriminoActual.getPosicion()[0].getX()+""+tetriminoActual.getPosicion()[0].getY());
-		System.out.println(tetriminoActual.getPosicion()[1].getX()+""+tetriminoActual.getPosicion()[1].getY());
-		System.out.println(tetriminoActual.getPosicion()[2].getX()+""+tetriminoActual.getPosicion()[2].getY());
-		System.out.println(tetriminoActual.getPosicion()[3].getX()+""+tetriminoActual.getPosicion()[3].getY());*/
 	    tetriminoActual.cambiarPosicion(1, 0);
-	    miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource("/Images/BloqueAmarillo.png")));
+	    miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource(tetriminoActual.getColor())));
 	    return true;
 	  }
 	  this.colisiona();
@@ -150,18 +145,20 @@ public class Grilla {
 	
 	public void colisiona(){
 	  ParOrdenado[] posiciones=tetriminoActual.getPosicion();	
+	  miLogica.actualizarTetriminoGrafico( posiciones, null);
 	  for(int i=0; i<posiciones.length; i++){
 	    casilleros[posiciones[i].getX()][posiciones[i].getY()].setEstado(true);
-	    miLogica.actualizarBloqueGrafico( posiciones[i].getX(), posiciones[i].getY(), new javax.swing.ImageIcon(getClass().getResource("/Images/BloqueAmarillo.png")));
+	    miLogica.actualizarBloqueGrafico( posiciones[i].getX(), posiciones[i].getY(), new javax.swing.ImageIcon(getClass().getResource(tetriminoActual.getColor())));
 	  }
-	 }
+	  this.actualizarTetriminoActual();
+	}
 	
 	private void generarTetrimino() {
 	  Random rand= new Random();
-	  int tetri= rand.nextInt(7);
+	  int tetri= rand.nextInt(9);
 	  switch (tetri) 
       {
-	      case 0:  tetriminoSiguiente= new PiezaT();
+	      case 7,0,9:  tetriminoSiguiente= new PiezaT();
 	  
           case 1:  tetriminoSiguiente= new PiezaJ();
                    break;

@@ -106,11 +106,11 @@ public class Logica {
     
     public void actualizarTetriminoGrafico(ParOrdenado [] posiciones, ImageIcon imageIcon) {
     	if (posiciones != null) {
-    		for (int i = 0; i < 4; i++) {
+    		for (int i = 0; i < posiciones.length; i++) {
     			
         		miGUI.graficarBloque(imageIcon, posiciones[i].getX(), posiciones[i].getY());
     			
-        	}
+            }
     	}
     }
 

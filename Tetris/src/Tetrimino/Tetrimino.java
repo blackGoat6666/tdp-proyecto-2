@@ -6,7 +6,7 @@ public abstract class Tetrimino {
 
     // atributos
     protected int rotacion;
-    protected char color;
+    protected String color;
     protected ParOrdenado p1,p2,p3,p4;
     protected ParOrdenado [] coordenadasActuales;
 
@@ -42,7 +42,7 @@ public abstract class Tetrimino {
                     this.posicion1(); 
     }
     
-    public char getColor() {
+    public String getColor() {
     	return color;
     }
     

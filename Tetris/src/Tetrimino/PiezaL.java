@@ -10,11 +10,11 @@ public class PiezaL extends Tetrimino {
 	ParOrdenado [] coordenadasActuales;
 	//constructor
 	public PiezaL() {
-		color='n';
-		p1= new ParOrdenado(5,0);
-		p2= new ParOrdenado(3,1);
-		p3= new ParOrdenado(4,1);
-		p4= new ParOrdenado(5,1);
+		color="/Images/BloqueNaranja.png";
+		p1= new ParOrdenado(0,5);
+		p2= new ParOrdenado(1,3);
+		p3= new ParOrdenado(1,4);
+		p4= new ParOrdenado(1,5);
 		coordenadasActuales = new ParOrdenado[4];
 		coordenadasActuales[0]=p1;
 		coordenadasActuales[1]=p2;

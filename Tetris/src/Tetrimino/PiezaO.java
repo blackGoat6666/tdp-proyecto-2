@@ -9,7 +9,7 @@ public class PiezaO extends Tetrimino{
 	ParOrdenado [] coordenadasActuales;
 	//constructor
 	public PiezaO() {
-		color='m';
+		color="/Images/BloqueAmarillo.png";
 		p1= new ParOrdenado(0,4);
 		p2= new ParOrdenado(0,5);
 		p3= new ParOrdenado(1,4);

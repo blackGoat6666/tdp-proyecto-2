@@ -8,7 +8,6 @@ public class Timer implements Runnable {
 	private Logica miLogica;
     private long tiempoBase;
     boolean correr;
-    
     //constructor
     
     public Timer(Logica log) {
@@ -21,7 +20,7 @@ public class Timer implements Runnable {
     //metodos
     public void comenzar(){
      correr=true;
-    tiempoBase=System.currentTimeMillis();
+     tiempoBase=System.currentTimeMillis();
     }
     
     
@@ -29,10 +28,8 @@ public class Timer implements Runnable {
       while(correr) {
         try {
           miLogica.setTiempo(this.getTotalTime());
-          if(this.segundos()% this.getVelocidad()==0) {
-            miLogica.moverTetAbajo();
-          }
-          Thread.sleep(250);
+          miLogica.moverTetAbajo();
+          Thread.sleep(this.getVelocidad());
         }
         catch(InterruptedException e) {
              e.printStackTrace();
@@ -64,14 +61,15 @@ public class Timer implements Runnable {
    
     
     private int getVelocidad() {
+      int dormir;	
       if(this.segundos()>150) {
-        return 500;
+        return dormir= 500;
       }else { 
         if(this.segundos()>60) {
-          return 725;
+          return dormir= 750;
         }
         else {
-          return 1000;
+          return dormir= 1000;
         }
       } 
     }

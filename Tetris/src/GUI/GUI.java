@@ -167,12 +167,12 @@ public class GUI {
 		
 		//labels de la grilla
 		
-		for (int i =  0; i < 21; i++) {
-	    	for (int j =  0; j < 10; j++) {
-	    		labels[i][j] = new JLabel("Label" + i+ j);
-	    		labels[i][j].setBounds(1+28*j, 2+28*i , 28, 28);
-	    		labels[i][j].setText(null);
-	    		panelGrilla.add(labels[i][j]);
+		for (int filas =  0; filas < 21; filas++) {
+	    	for (int columna =  0; columna < 10; columna++) {
+	    		labels[filas][columna] = new JLabel("Label" + filas+ columna);
+	    		labels[filas][columna].setBounds(1+28*columna, 2+28*filas , 28, 28);
+	    		labels[filas][columna].setText(null);
+	    		panelGrilla.add(labels[filas][columna]);
 	    	}
 	    }
 		// manejar eventos

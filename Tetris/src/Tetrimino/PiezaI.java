@@ -10,7 +10,7 @@ public class PiezaI extends Tetrimino{
 	ParOrdenado [] coordenadasActuales;
 	//constructor
 	public PiezaI() {
-		color='c';
+		color="/Images/BloqueCian.png";
 		p1= new ParOrdenado(0,3);
 		p2= new ParOrdenado(0,4);
 		p3= new ParOrdenado(0,5);
@@ -158,7 +158,7 @@ public class PiezaI extends Tetrimino{
 			return retorno;
 		}
 		else if (rotacion==2) {
-			ParOrdenado[] retorno = new ParOrdenado[0];
+			ParOrdenado[] retorno = new ParOrdenado[1];
 			retorno[0]=p4;
 			return retorno;
 		}

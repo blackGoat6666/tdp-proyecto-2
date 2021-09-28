@@ -4,12 +4,12 @@ import ParOrdenado.ParOrdenado;
 
 public class PiezaS extends Tetrimino{
 	//atributos de instancia
-
+    
 	private int rotacion;
 	ParOrdenado [] coordenadasActuales;
 	//constructor
 	public PiezaS() {
-		color='e';
+		color="/Images/BloqueVerde.png";
 		p1= new ParOrdenado(0,4);
 		p2= new ParOrdenado(0,5);
 		p3= new ParOrdenado(1,3);

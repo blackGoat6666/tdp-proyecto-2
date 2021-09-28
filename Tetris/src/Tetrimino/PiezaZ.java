@@ -9,11 +9,11 @@ public class PiezaZ extends Tetrimino{
 	ParOrdenado [] coordenadasActuales;
 	//constructor
 	public PiezaZ() {
-		color='r';
-		p1= new ParOrdenado(0,4);
-		p2= new ParOrdenado(0,5);
-		p3= new ParOrdenado(1,3);
-		p4= new ParOrdenado(1,4);
+		color="/Images/BloqueRojo.png";
+		p1= new ParOrdenado(0,3);
+		p2= new ParOrdenado(0,4);
+		p3= new ParOrdenado(1,4);
+		p4= new ParOrdenado(1,5);
 		coordenadasActuales = new ParOrdenado[4];
 		coordenadasActuales[0]=p1;
 		coordenadasActuales[1]=p2;
