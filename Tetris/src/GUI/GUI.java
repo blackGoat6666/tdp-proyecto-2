@@ -43,6 +43,7 @@ public class GUI {
 	JLabel labels[][] = new JLabel[21][10];
 	private JLabel lblpuntuacionModificable;
 	Thread tiempo;
+	private JLabel lblGameOver;
 	/**
 	 * Launch the application.
 	 */
@@ -73,6 +74,12 @@ public class GUI {
 		lblpuntuacionModificable.setForeground(new Color(255, 255, 255));
 		lblpuntuacionModificable.setBackground(new Color(255, 255, 255));
 		lblpuntuacionModificable.setBounds(27, 66, 234, 58);
+		lblGameOver = new JLabel("Game Over");
+		lblGameOver.setForeground(Color.RED);
+		lblGameOver.setFont(new Font("Bauhaus 93", Font.PLAIN, 32));
+		lblGameOver.setHorizontalAlignment(SwingConstants.LEFT);
+		lblGameOver.setBounds(610, 304, 164, 44);
+		lblGameOver.setVisible(false);
 		miLogica = new Logica(this);
 		initialize();
 		tiempo=new Thread(miLogica.getTimer());
@@ -169,6 +176,9 @@ public class GUI {
 		
 		panelTiempo.add(lblTiempoTranscurrido);
 		
+		panelFondo.add(lblGameOver);
+		
+		
 		
 		
 		
@@ -227,4 +237,7 @@ public class GUI {
       return labels[x][y].getText();	
 	}
 	
+	public void setGameOver() {
+		lblGameOver.setVisible(true);
+	}
 }

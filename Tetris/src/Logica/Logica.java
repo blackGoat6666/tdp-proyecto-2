@@ -84,6 +84,7 @@ public class Logica {
     public void terminarJuego () {
       jugando=false;
       miTimer.terminar();
+      miGUI.setGameOver();
     }
 
     public void sumarPuntos (int cantFilas) {
