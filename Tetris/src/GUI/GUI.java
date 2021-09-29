@@ -219,8 +219,12 @@ public class GUI {
 	public void setLabelPuntuacion(String puntuacion) {
 		lblpuntuacionModificable.setText(puntuacion);
 	}
-	public void graficarBloque(ImageIcon imageIcon, int labelX, int labelY) {
+	public void graficarBloque(ImageIcon imageIcon, int labelX, int labelY, String ruta) {
 		labels[labelX][labelY].setIcon(imageIcon);
+		labels[labelX][labelY].setText(ruta);
+	}
+	public String getColor(int x, int y) {
+      return labels[x][y].getText();	
 	}
 	
 }

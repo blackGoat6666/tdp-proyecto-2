@@ -58,19 +58,19 @@ public class PiezaO extends Tetrimino{
 	public ParOrdenado[] getPosicion() {
         return coordenadasActuales;
     }
-	public ParOrdenado[] colisionIzquierda(int rotacion) {
+	public ParOrdenado[] colisionIzquierda() {
 		ParOrdenado[] retorno = new ParOrdenado[2];
 		retorno[0]=p1;
 		retorno[1]=p3;
 		return retorno;		
 	}
-	public ParOrdenado[] colisionDerecha(int rotacion) {
+	public ParOrdenado[] colisionDerecha() {
 		ParOrdenado[] retorno = new ParOrdenado[2];
 		retorno[0]=p2;
 		retorno[1]=p4;
 		return retorno;		
 	}
-	public ParOrdenado[] colisionPiso(int rotacion) {
+	public ParOrdenado[] colisionPiso() {
 		ParOrdenado[] retorno = new ParOrdenado[2];
 		retorno[0]=p3;
 		retorno[1]=p4;

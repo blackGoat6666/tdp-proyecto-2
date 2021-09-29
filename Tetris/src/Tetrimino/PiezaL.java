@@ -70,7 +70,7 @@ public class PiezaL extends Tetrimino {
 	public ParOrdenado[] getPosicion() {
         return coordenadasActuales;
     }
-	public ParOrdenado[] colisionIzquierda(int rotacion) {
+	public ParOrdenado[] colisionIzquierda() {
 		if(rotacion==1) {
 			ParOrdenado[] retorno = new ParOrdenado[2];
 			retorno[0]=p1;
@@ -98,7 +98,7 @@ public class PiezaL extends Tetrimino {
 			return retorno;
 		}		
 	}
-	public ParOrdenado[] colisionDerecha(int rotacion) {
+	public ParOrdenado[] colisionDerecha() {
 		if(rotacion==1) {
 			ParOrdenado[] retorno = new ParOrdenado[2];
 			retorno[0]=p1;
@@ -127,7 +127,7 @@ public class PiezaL extends Tetrimino {
 		}
 		
 	}
-	public ParOrdenado[] colisionPiso(int rotacion) {
+	public ParOrdenado[] colisionPiso() {
 		if(rotacion==1) {
 			ParOrdenado[] retorno = new ParOrdenado[3];
 			retorno[0]=p2;

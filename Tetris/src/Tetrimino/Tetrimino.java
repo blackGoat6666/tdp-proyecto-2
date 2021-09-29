@@ -63,12 +63,12 @@ public abstract class Tetrimino {
     }
 
 
-    public abstract ParOrdenado[] colisionIzquierda(int rot);
+    public abstract ParOrdenado[] colisionIzquierda();
 
 
-    public abstract ParOrdenado[] colisionDerecha(int rot);
+    public abstract ParOrdenado[] colisionDerecha();
 
 
-    public abstract ParOrdenado[] colisionPiso(int rot);
+    public abstract ParOrdenado[] colisionPiso();
 
 }

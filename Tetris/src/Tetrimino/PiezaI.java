@@ -65,10 +65,10 @@ public class PiezaI extends Tetrimino{
 	protected void posicion3() {
 		int piso=p3.getX();
 		p1.setX(piso);
-		p1.setY(p1.getY()+1);
-		p3.setY(p3.getY()-1);
+		p1.setY((p1.getY())+1);
+		p3.setY((p3.getY())-1);
 		p2.setX(piso);
-		p4.setY(p4.getY()-2);
+		p4.setY((p4.getY())-2);
 		p4.setX(piso);
 		
 		
@@ -90,7 +90,7 @@ public class PiezaI extends Tetrimino{
 	public ParOrdenado[] getPosicion() {
         return coordenadasActuales;
     }
-	public ParOrdenado[] colisionIzquierda(int rotacion) {
+	public ParOrdenado[] colisionIzquierda() {
 		if(rotacion==1) {
 			ParOrdenado[] retorno = new ParOrdenado[1];
 			retorno[0]=p1;
@@ -118,7 +118,10 @@ public class PiezaI extends Tetrimino{
 			return retorno;
 		}		
 	}
-	public ParOrdenado[] colisionDerecha(int rotacion) {
+
+	
+	
+	public ParOrdenado[] colisionDerecha() {
 		if(rotacion==1) {
 			ParOrdenado[] retorno = new ParOrdenado[1];
 			retorno[0]=p4;
@@ -147,7 +150,7 @@ public class PiezaI extends Tetrimino{
 		}
 
 	}
-	public ParOrdenado[] colisionPiso(int rotacion) {
+	public ParOrdenado[] colisionPiso() {
 		if(rotacion==1) {
 			ParOrdenado[] retorno = new ParOrdenado[4];
 			retorno[0]=p1;
