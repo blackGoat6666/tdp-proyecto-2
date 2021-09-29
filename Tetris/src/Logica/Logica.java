@@ -28,6 +28,13 @@ public class Logica {
     public void comenzarJuego(){
       jugando=true;
       miTimer.comenzar();
+      miGrilla.reiniciarGrilla();
+      int filas, columnas;
+      for (filas=0; filas<21; filas++) {
+    	  for (columnas=0; columnas<10; columnas++) {
+    		  actualizarBloqueGrafico(filas, columnas, null, null);
+    	  }
+      }
       puntuacion=0;
       miGUI.setLabelPuntuacion("0000");
 

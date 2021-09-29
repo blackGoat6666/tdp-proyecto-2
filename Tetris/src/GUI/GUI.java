@@ -44,7 +44,7 @@ public class GUI {
 	private JLabel lblpuntuacionModificable;
 	Thread tiempo;
 	private JLabel lblGameOver;
-
+	private JButton btnJugar;
 	private JLabel lblProximoTetriminoImagen;
 	/**
 	 * Launch the application.
@@ -78,11 +78,17 @@ public class GUI {
 		lblpuntuacionModificable.setBounds(27, 66, 234, 58);
 		lblProximoTetriminoImagen = new JLabel("");
 		lblGameOver = new JLabel("Game Over");
+		lblGameOver.setBackground(new Color(0, 0, 0));
 		lblGameOver.setForeground(Color.RED);
 		lblGameOver.setFont(new Font("Bauhaus 93", Font.PLAIN, 32));
 		lblGameOver.setHorizontalAlignment(SwingConstants.LEFT);
 		lblGameOver.setBounds(610, 304, 164, 44);
 		lblGameOver.setVisible(false);
+		btnJugar = new JButton("Jugar");
+		btnJugar.setForeground(new Color(255, 255, 255));
+		btnJugar.setFont(new Font("Bauhaus 93", Font.PLAIN, 30));
+		btnJugar.setBounds(624, 71, 133, 64);
+		btnJugar.setBackground(new Color(20, 10, 30));
 		miLogica = new Logica(this);
 		initialize();
 		tiempo=new Thread(miLogica.getTimer());
@@ -142,12 +148,6 @@ public class GUI {
 		lblTetriminoFondo.setBounds(10, 239, 317, 311);
 		lblTetriminoFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/proxTetrimno.png"))); 
 		panelFondo.add(lblTetriminoFondo);
-		
-		JButton btnJugar = new JButton("Jugar");
-		btnJugar.setForeground(new Color(255, 255, 255));
-		btnJugar.setFont(new Font("Bauhaus 93", Font.PLAIN, 30));
-		btnJugar.setBounds(624, 71, 133, 64);
-		btnJugar.setBackground(new Color(20, 10, 30));
 		panelFondo.add(btnJugar);
 		
 		btnJugar.addActionListener(new ActionListener(){
@@ -157,6 +157,7 @@ public class GUI {
 		  private void comenzarJuego() {
 		    miLogica.comenzarJuego();  
 		    btnJugar.setEnabled(false);
+		    lblGameOver.setVisible(false);
 		    tiempo.start();
 		  }
 		});
@@ -245,6 +246,7 @@ public class GUI {
 	
 	public void setGameOver() {
 		lblGameOver.setVisible(true);
+		btnJugar.setEnabled(true);
 	}
 	public void graficarProximoTetrimino(ImageIcon imageIcon) {
 		lblProximoTetriminoImagen.setIcon(imageIcon);

@@ -237,5 +237,12 @@ public class Grilla {
 	  return new ParOrdenado(masAbajo,masArriba);
 	}
 	
-	
+	public void reiniciarGrilla() {
+		int fila, columna;
+		for(fila=0; fila<casilleros.length ; fila++) {
+            for(columna=0; columna<casilleros[0].length; columna++) {
+              casilleros[fila][columna].setEstado(false);
+            }
+          }
+	}
 }
