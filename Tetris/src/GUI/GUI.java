@@ -4,14 +4,23 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Image;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.event.KeyListener;
 import Logica.Logica;
+import Tetrimino.PiezaI;
+import Tetrimino.PiezaJ;
+import Tetrimino.PiezaL;
+import Tetrimino.PiezaO;
+import Tetrimino.PiezaS;
+import Tetrimino.PiezaT;
+import Tetrimino.PiezaZ;
 
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
@@ -20,6 +29,7 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.SwingConstants;
@@ -32,9 +42,10 @@ public class GUI {
 	private JLabel lblTiempoTranscurrido;
 	JLabel labels[][] = new JLabel[21][10];
 	private JLabel lblpuntuacionModificable;
-	private JLabel lblProximoTetriminoImagen;
-	JLabel lblGameOver;
 	Thread tiempo;
+	private JLabel lblGameOver;
+
+	private JLabel lblProximoTetriminoImagen;
 	/**
 	 * Launch the application.
 	 */
@@ -55,7 +66,6 @@ public class GUI {
 	 * Create the application.
 	 */
 	public GUI() {
-		lblProximoTetriminoImagen = new JLabel("");
 	    lblTiempoTranscurrido= new JLabel("00:00");
 	    lblTiempoTranscurrido.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTiempoTranscurrido.setForeground(new Color(255, 255, 255));
@@ -66,7 +76,13 @@ public class GUI {
 		lblpuntuacionModificable.setForeground(new Color(255, 255, 255));
 		lblpuntuacionModificable.setBackground(new Color(255, 255, 255));
 		lblpuntuacionModificable.setBounds(27, 66, 234, 58);
-        lblGameOver = new JLabel("Game Over");
+		lblProximoTetriminoImagen = new JLabel("");
+		lblGameOver = new JLabel("Game Over");
+		lblGameOver.setForeground(Color.RED);
+		lblGameOver.setFont(new Font("Bauhaus 93", Font.PLAIN, 32));
+		lblGameOver.setHorizontalAlignment(SwingConstants.LEFT);
+		lblGameOver.setBounds(610, 304, 164, 44);
+		lblGameOver.setVisible(false);
 		miLogica = new Logica(this);
 		initialize();
 		tiempo=new Thread(miLogica.getTimer());
@@ -88,7 +104,6 @@ public class GUI {
 		panelFondo.setBorder(borde);
 		frmTetris.getContentPane().add(panelFondo);
 		panelFondo.setLayout(null);
-		
 		
 		lblProximoTetriminoImagen.setBounds(90, 330, 135, 110);
 		panelFondo.add(lblProximoTetriminoImagen);
@@ -128,13 +143,6 @@ public class GUI {
 		lblTetriminoFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/proxTetrimno.png"))); 
 		panelFondo.add(lblTetriminoFondo);
 		
-		lblGameOver.setForeground(Color.RED);
-		lblGameOver.setFont(new Font("Bauhaus 93", Font.PLAIN, 32));
-		lblGameOver.setHorizontalAlignment(SwingConstants.LEFT);
-		lblGameOver.setBounds(610, 304, 164, 44);
-		lblGameOver.setVisible(false);
-		panelFondo.add(lblGameOver);
-		
 		JButton btnJugar = new JButton("Jugar");
 		btnJugar.setForeground(new Color(255, 255, 255));
 		btnJugar.setFont(new Font("Bauhaus 93", Font.PLAIN, 30));
@@ -173,6 +181,9 @@ public class GUI {
 		panelTiempo.add(lblTiempo);
 		
 		panelTiempo.add(lblTiempoTranscurrido);
+		
+		panelFondo.add(lblGameOver);
+		
 		
 		
 		
@@ -224,16 +235,18 @@ public class GUI {
 	public void setLabelPuntuacion(String puntuacion) {
 		lblpuntuacionModificable.setText(puntuacion);
 	}
-	public void graficarBloque(ImageIcon imageIcon, int labelX, int labelY) {
+	public void graficarBloque(ImageIcon imageIcon, int labelX, int labelY, String ruta) {
 		labels[labelX][labelY].setIcon(imageIcon);
+		labels[labelX][labelY].setText(ruta);
 	}
 	public String getColor(int x, int y) {
       return labels[x][y].getText();	
 	}
+	
+	public void setGameOver() {
+		lblGameOver.setVisible(true);
+	}
 	public void graficarProximoTetrimino(ImageIcon imageIcon) {
 		lblProximoTetriminoImagen.setIcon(imageIcon);
-	}
-        public void setGameOver() {
-		lblGameOver.setVisible(true);
 	}
 }

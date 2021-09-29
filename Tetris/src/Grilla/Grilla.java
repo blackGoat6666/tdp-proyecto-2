@@ -54,11 +54,11 @@ public class Grilla {
 	        }
 	        casilleros[filaActual][columna].setEstado(casilleros[filaActual-1][columna].getEstado());  
 	        if(casilleros[filaActual][columna].getEstado()==false) {
-	          miLogica.actualizarBloqueGrafico(filaActual, columna, null);  	
+	          miLogica.actualizarBloqueGrafico(filaActual, columna, null, null);  	
 	        }
 	        else {
 	          String color=miLogica.getColor(filaActual-1, columna);
-	          miLogica.actualizarBloqueGrafico(filaActual, columna, new javax.swing.ImageIcon(getClass().getResource(color)));
+	          miLogica.actualizarBloqueGrafico(filaActual, columna, new javax.swing.ImageIcon(getClass().getResource(color)), color);
 	        }
 	      } 
 	    filaActual--;
@@ -74,9 +74,9 @@ public class Grilla {
 	    }
 	  }
 	  if(puedenMoverse==posicionActual.length){
-		miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), null);
+		miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), null, null);
 	    tetriminoActual.cambiarPosicion(0, -1);
-	    miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource(tetriminoActual.getColor())));
+	    miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource(tetriminoActual.getColor())), tetriminoActual.getColor());
 	  }
 	}
 	
@@ -89,9 +89,9 @@ public class Grilla {
 		}
 	  }
 	  if(puedenMoverse==posicionActual.length){
-	    miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), null);
+	    miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), null, null);
 	    tetriminoActual.cambiarPosicion(0, 1);
-	    miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource(tetriminoActual.getColor())));
+	    miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource(tetriminoActual.getColor())), tetriminoActual.getColor());
 	  }
 	}
 	
@@ -139,9 +139,9 @@ public class Grilla {
 	  for(int i=0; i<3; i++){
 		  tetriminoActual.rotar();	
 	  }
-	  miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), null);
+	  miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), null, null);
 	  tetriminoActual.rotar();
-	  miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource(tetriminoActual.getColor())));
+	  miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource(tetriminoActual.getColor())), tetriminoActual.getColor());
 	  return true;
 	}
 	
@@ -154,9 +154,9 @@ public class Grilla {
 		}
 	  }
 	  if(puedenMoverse==posicionActual.length){
-		miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), null);
+		miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), null, null);
 	    tetriminoActual.cambiarPosicion(1, 0);
-	    miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource(tetriminoActual.getColor())));
+	    miLogica.actualizarTetriminoGrafico( tetriminoActual.getPosicion(), new javax.swing.ImageIcon(getClass().getResource(tetriminoActual.getColor())), tetriminoActual.getColor());
 	    return true;
 	  }
 	  return false;
@@ -164,10 +164,10 @@ public class Grilla {
 	
 	public void colisiona(){
 	  ParOrdenado[] posiciones=tetriminoActual.getPosicion();	
-	  miLogica.actualizarTetriminoGrafico( posiciones, null);
+	  miLogica.actualizarTetriminoGrafico( posiciones, null, null);
 	  for(int i=0; i<posiciones.length; i++){
 	    casilleros[posiciones[i].getX()][posiciones[i].getY()].setEstado(true);
-	    miLogica.actualizarBloqueGrafico( posiciones[i].getX(), posiciones[i].getY(), new javax.swing.ImageIcon(getClass().getResource(tetriminoActual.getColor())));
+	    miLogica.actualizarBloqueGrafico( posiciones[i].getX(), posiciones[i].getY(), new javax.swing.ImageIcon(getClass().getResource(tetriminoActual.getColor())), tetriminoActual.getColor());
 	  }
 	  this.actualizarTetriminoActual();
 	}
@@ -192,7 +192,7 @@ public class Grilla {
           case 6:  tetriminoSiguiente= new PiezaZ();
                    break;
        }
-	  miLogica.actualizarProximoTetriminoGrafico(tetriminoSiguiente.getImagen());
+	   miLogica.actualizarProximoTetriminoGrafico(tetriminoSiguiente.getImagen());
 	}
 	
 	public void actualizarTetriminoActual() {

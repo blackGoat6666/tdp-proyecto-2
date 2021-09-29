@@ -48,7 +48,6 @@ public abstract class Tetrimino {
     public String getColor() {
     	return color;
     }
-    
     public ImageIcon getImagen() {
     	return imagenTetrimino;
     }
@@ -77,5 +76,7 @@ public abstract class Tetrimino {
 
 
     public abstract ParOrdenado[] colisionPiso();
+
+
 
 }
