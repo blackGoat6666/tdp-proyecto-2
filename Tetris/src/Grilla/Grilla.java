@@ -13,7 +13,6 @@ import Tetrimino.PiezaS;
 import Tetrimino.PiezaT;
 import Tetrimino.PiezaZ;
 import Tetrimino.Tetrimino;
-import javax.swing.ImageIcon;
 
 public class Grilla {
 	// atributos
@@ -198,8 +197,9 @@ public class Grilla {
 	}
 
 	public boolean filaLlena(int fila) {
-	  for(int i=0; i<casilleros[0].length; i++){
-	    if(casilleros[fila][i].getEstado()==false) {
+	  for(int columna=0; columna<casilleros[0].length; columna++){
+	    if(casilleros[fila][columna].getEstado()==false) {
+	      System.out.println("casillero "+fila+" "+columna+" "+casilleros[fila][columna].getEstado());	
 	      return false;	
 	    }
 	  }

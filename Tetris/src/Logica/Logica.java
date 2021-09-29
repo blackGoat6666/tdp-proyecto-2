@@ -33,19 +33,19 @@ public class Logica {
 
     }
 
-    public void moverTetIzq () {
+    public void moverTetIzq() {
       if(jugando==true) {
         miGrilla.moverIzquierda();
       }
     }
 
-    public void moverTetDer () {
+    public void moverTetDer() {
       if(jugando==true) {
         miGrilla.moverDerecha();
       }
     }
 
-    public void moverTetAbajo (){
+    public void moverTetAbajo(){
       if(jugando) {
         boolean bajo=  miGrilla.moverAbajo(); 
         if(!bajo){ 
@@ -53,6 +53,7 @@ public class Logica {
           ParOrdenado filas= miGrilla.getTetriminoFilas();
           int[] filasABorrar= new int[4];
           for(int i=filas.getX(); i>=filas.getY(); i-- ){
+        	System.out.println("filla llena?: "+miGrilla.filaLlena(i));  
             if(miGrilla.filaLlena(i)) {
               filasABorrar[filasLlenas]=i;
               filasLlenas++;

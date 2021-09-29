@@ -61,15 +61,14 @@ public class Timer implements Runnable {
    
     
     private int getVelocidad() {
-      int dormir;	
       if(this.segundos()>150) {
-        return dormir= 500;
+        return 500;
       }else { 
         if(this.segundos()>60) {
-          return dormir= 750;
+          return 750;
         }
         else {
-          return dormir= 1000;
+          return 1000;
         }
       } 
     }

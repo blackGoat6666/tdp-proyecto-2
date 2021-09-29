@@ -12,8 +12,15 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
-
+import java.awt.event.KeyListener;
 import Logica.Logica;
+import Tetrimino.PiezaI;
+import Tetrimino.PiezaJ;
+import Tetrimino.PiezaL;
+import Tetrimino.PiezaO;
+import Tetrimino.PiezaS;
+import Tetrimino.PiezaT;
+import Tetrimino.PiezaZ;
 
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
@@ -24,7 +31,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.SwingConstants;
 
@@ -168,41 +174,53 @@ public class GUI {
 		
 		//labels de la grilla
 		
-		for (int filas =  0; filas < 21; filas++) {
-	    	for (int columna =  0; columna < 10; columna++) {
-	    		labels[filas][columna] = new JLabel("Label" + filas+ columna);
+		for (int filas =0; filas < 21; filas++){
+	    	for (int columna =0; columna < 10; columna++) {
+	    		labels[filas][columna] = new JLabel("Label" +filas+ columna);
 	    		labels[filas][columna].setBounds(1+28*columna, 2+28*filas , 28, 28);
 	    		labels[filas][columna].setText(null);
 	    		panelGrilla.add(labels[filas][columna]);
 	    	}
 	    }
 		// manejar eventos
-		frmTetris.addKeyListener(new KeyAdapter(){
-			public void keyPressed(KeyEvent e) {
-				System.out.println("algo toque");
-				if (e.getKeyCode() == KeyEvent.VK_UP) {
-					miLogica.girarTetrimino();
-					System.out.println("gira gil");
-				}
-				if(e.getKeyCode()==KeyEvent.VK_LEFT) {
-					miLogica.moverTetIzq();
-					System.out.println("arriba nico del caño");
-				}
-				if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
-					miLogica.moverTetDer();
-					System.out.println("milei");
-				}
-		   }
-		 });
+		frmTetris.setFocusable(true);
+		frmTetris.addKeyListener(new KeyListener() {
+	        @Override
+	        public void keyTyped(KeyEvent e) {
+	        }
+
+	        @Override
+	        public void keyPressed(KeyEvent e) {
+	        	int presiona=e.getKeyCode();
+	        	switch (presiona) 
+	            {
+	      	        case KeyEvent.VK_UP:  miLogica.girarTetrimino();
+	      	                 break;
+	                case KeyEvent.VK_LEFT:  miLogica.moverTetIzq();
+	                         break;
+	                case KeyEvent.VK_RIGHT: miLogica.moverTetDer();
+	                         break;
+	                case KeyEvent.VK_DOWN: miLogica.moverTetAbajo();
+	                         break;
+	               
+	            }
+	        }
+
+	        @Override
+	        public void keyReleased(KeyEvent e) {
+	        }
+	    });
+		
+		
 	}
 	public void setLabelTiempo(String tiempo) {
-		  lblTiempoTranscurrido.setText(tiempo);
+		lblTiempoTranscurrido.setText(tiempo);
 	}
 	public void setLabelPuntuacion(String puntuacion) {
 		lblpuntuacionModificable.setText(puntuacion);
 	}
 	public void graficarBloque(ImageIcon imageIcon, int labelX, int labelY) {
-		labels[labelX][labelY].setIcon( imageIcon);
+		labels[labelX][labelY].setIcon(imageIcon);
 	}
 	
 }
