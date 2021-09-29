@@ -38,7 +38,7 @@ public class PiezaZ extends Tetrimino{
         }
     }
 	protected void posicion1() {
-		p2.setX(p2.getX()+2);
+		p1.setX(p1.getX()-2);
 		p4.setY(p4.getY()+2);
 		rotacion=1;
 		
@@ -50,7 +50,7 @@ public class PiezaZ extends Tetrimino{
 		
 	}
 	protected void posicion3() {
-		p2.setX(p2.getX()-2);
+		p1.setX(p1.getX()+2);
 		p4.setY(p4.getY()-2);
 		rotacion=3;
 	}
