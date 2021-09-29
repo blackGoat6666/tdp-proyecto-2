@@ -9,6 +9,7 @@ public class PiezaJ extends Tetrimino{
 	//constructor
 	public PiezaJ() {
 		color="/Images/BloqueAzul.png";
+		imagenTetrimino= new javax.swing.ImageIcon(getClass().getResource("/Images/ImagenTetriminoJ.png"));
 		p1= new ParOrdenado(0,3);
 		p2= new ParOrdenado(1,3);
 		p3= new ParOrdenado(1,4);

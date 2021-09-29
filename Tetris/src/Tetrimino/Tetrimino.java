@@ -1,5 +1,7 @@
 package Tetrimino;
 
+import javax.swing.ImageIcon;
+
 import ParOrdenado.ParOrdenado;
 
 public abstract class Tetrimino {
@@ -7,6 +9,7 @@ public abstract class Tetrimino {
     // atributos
     protected int rotacion;
     protected String color;
+    protected ImageIcon imagenTetrimino;
     protected ParOrdenado p1,p2,p3,p4;
     protected ParOrdenado [] coordenadasActuales;
 
@@ -44,6 +47,10 @@ public abstract class Tetrimino {
     
     public String getColor() {
     	return color;
+    }
+    
+    public ImageIcon getImagen() {
+    	return imagenTetrimino;
     }
     
     protected abstract void posicion1();

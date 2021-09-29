@@ -85,6 +85,7 @@ public class Logica {
       jugando=false;
       miTimer.terminar();
       miGUI.setGameOver();
+      
     }
 
     public void sumarPuntos (int cantFilas) {
@@ -106,18 +107,23 @@ public class Logica {
       miGUI.setLabelTiempo(tiempo);
     }
     
-    public void actualizarTetriminoGrafico(ParOrdenado [] posiciones, ImageIcon imageIcon, String ruta) {
+    public void actualizarTetriminoGrafico(ParOrdenado [] posiciones, ImageIcon imageIcon) {
     	if (posiciones != null) {
     		for (int i = 0; i < posiciones.length; i++) {
     			
-        		miGUI.graficarBloque(imageIcon, posiciones[i].getX(), posiciones[i].getY(), ruta);
+        		miGUI.graficarBloque(imageIcon, posiciones[i].getX(), posiciones[i].getY());
     			
             }
     	}
     }
 
-    public void actualizarBloqueGrafico(int x, int y, ImageIcon imageIcon, String ruta) {
-    	miGUI.graficarBloque(imageIcon, x, y, ruta );
+    public void actualizarBloqueGrafico(int x, int y, ImageIcon imageIcon) {
+    	miGUI.graficarBloque(imageIcon, x, y);
+    		
+    }
+    
+    public void actualizarProximoTetriminoGrafico(ImageIcon imageIcon) {
+    	miGUI.graficarProximoTetrimino(imageIcon);
     		
     }
     
