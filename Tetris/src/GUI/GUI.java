@@ -40,10 +40,10 @@ public class GUI {
 	private JFrame frmTetris;
 	private Logica miLogica;
 	private JLabel lblTiempoTranscurrido;
+	private JLabel lblGameOver;
 	JLabel labels[][] = new JLabel[21][10];
 	private JLabel lblpuntuacionModificable;
 	Thread tiempo;
-	private JLabel lblGameOver;
 	private JButton btnJugar;
 	private JLabel lblProximoTetriminoImagen;
 	/**
@@ -77,13 +77,8 @@ public class GUI {
 		lblpuntuacionModificable.setBackground(new Color(255, 255, 255));
 		lblpuntuacionModificable.setBounds(27, 66, 234, 58);
 		lblProximoTetriminoImagen = new JLabel("");
-		lblGameOver = new JLabel("Game Over");
-		lblGameOver.setBackground(new Color(0, 0, 0));
-		lblGameOver.setForeground(Color.RED);
-		lblGameOver.setFont(new Font("Bauhaus 93", Font.PLAIN, 32));
-		lblGameOver.setHorizontalAlignment(SwingConstants.LEFT);
-		lblGameOver.setBounds(610, 304, 164, 44);
-		lblGameOver.setVisible(false);
+		lblGameOver = new JLabel("");
+		lblGameOver.setBounds(-39, 209, 410, 311);
 		btnJugar = new JButton("Jugar");
 		btnJugar.setForeground(new Color(255, 255, 255));
 		btnJugar.setFont(new Font("Bauhaus 93", Font.PLAIN, 30));
@@ -91,7 +86,6 @@ public class GUI {
 		btnJugar.setBackground(new Color(20, 10, 30));
 		miLogica = new Logica(this);
 		initialize();
-		tiempo=new Thread(miLogica.getTimer());
 	}
 
 	/**
@@ -110,6 +104,11 @@ public class GUI {
 		panelFondo.setBorder(borde);
 		frmTetris.getContentPane().add(panelFondo);
 		panelFondo.setLayout(null);
+		
+		
+		panelFondo.add(lblGameOver);
+		lblGameOver.setVisible(false);
+		lblGameOver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gameOver.png")));
 		
 		lblProximoTetriminoImagen.setBounds(90, 330, 135, 110);
 		panelFondo.add(lblProximoTetriminoImagen);
@@ -157,8 +156,9 @@ public class GUI {
 		  private void comenzarJuego() {
 		    miLogica.comenzarJuego();  
 		    btnJugar.setEnabled(false);
-		    lblGameOver.setVisible(false);
+		    tiempo= new Thread(miLogica.getTimer());
 		    tiempo.start();
+		    lblGameOver.setVisible(false);
 		  }
 		});
 		
@@ -183,7 +183,7 @@ public class GUI {
 		
 		panelTiempo.add(lblTiempoTranscurrido);
 		
-		panelFondo.add(lblGameOver);
+	
 		
 		
 		
@@ -247,6 +247,7 @@ public class GUI {
 	public void setGameOver() {
 		lblGameOver.setVisible(true);
 		btnJugar.setEnabled(true);
+		lblProximoTetriminoImagen.setIcon(null);
 	}
 	public void graficarProximoTetrimino(ImageIcon imageIcon) {
 		lblProximoTetriminoImagen.setIcon(imageIcon);
