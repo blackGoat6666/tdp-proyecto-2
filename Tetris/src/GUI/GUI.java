@@ -119,6 +119,7 @@ public class GUI {
 		lblproxTetrimino.setFont(new Font("Bauhaus 93", Font.PLAIN, 33));
 		lblproxTetrimino.setBounds(26, 506, 271, 44);
 		panelFondo.add(lblproxTetrimino);
+		lblproxTetrimino.setVisible(false);
 		
 		JPanel panelPuntuacion = new JPanel();
 		panelPuntuacion.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), null));
@@ -159,6 +160,7 @@ public class GUI {
 		    tiempo= new Thread(miLogica.getTimer());
 		    tiempo.start();
 		    lblGameOver.setVisible(false);
+		    lblproxTetrimino.setVisible(true);
 		  }
 		});
 		
